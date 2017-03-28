@@ -1,7 +1,7 @@
 import { expect } from '../../../../../configuration/testSetup'
 import { newProject, editProject, deleteProject } from '../project'
 import { getProjectById } from '../../queries/project'
-import { mockProjectData } from '../../mockTestData'
+import { mockProjectData } from '../../mockDatabaseTestData'
 import { withThreeProjects } from '../../testsHelper'
 
 const data = mockProjectData

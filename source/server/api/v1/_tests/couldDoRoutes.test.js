@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { expect, chai } from '../../../../../configuration/testSetup'
 import server from '../../../server'
+import { mockCouldDoData } from '../mockRoutesTestData'
 import { withThreeCouldDos } from '../../../../dataServices/database/testsHelper'
 
 describe( 'couldDo routes', () => {
@@ -10,7 +11,7 @@ describe( 'couldDo routes', () => {
     it( 'should return created couldDo', () =>
       chai.request( server )
         .post( '/could-do/new' )
-        .send({ text: 'quit coffee', user_id: 1, project_id: 1 })
+        .send( mockCouldDoData.fakeEdit )
         .then( response => expect( response.body.text ).to.equal( 'quit coffee' ) )
     )
 
