@@ -18,8 +18,8 @@ const mockCouldDoData = {
     project_id: 7
   },
   invalidCouldDo: {
-    text: 'make toast',
-    how_dark: 'burnt'
+    backpain: 'not rad',
+    user_id: 'ten thousand',
   },
   fakeEdit: {
     text: 'quit coffee'

@@ -18,7 +18,7 @@ describe( 'couldDo routes', () => {
     it( 'should throw an error if supplied invalid attributes', () =>
       chai.request( server )
         .post( '/could-do/new' )
-        .send({ backpain: 'not rad', user_id: 'ten thousand' })
+        .send( mockCouldDoData.invalidCouldDo )
         .catch( error => expect( error ).to.be.an.instanceof( Error ))
     )
 
@@ -45,7 +45,7 @@ describe( 'couldDo routes', () => {
       it( 'should throw an error if given invalid attributes', () =>
         chai.request( server )
           .post( '/could-do/edit/998' )
-          .send({ backpain: 'not rad', user_id: 'ten thousand' })
+          .send( mockCouldDoData.invalidCouldDo )
           .catch( error => expect( error ).to.be.an.instanceof( Error ))
       )
 
