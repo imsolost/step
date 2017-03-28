@@ -11,8 +11,8 @@ describe( 'couldDo routes', () => {
     it( 'should return created couldDo', () =>
       chai.request( server )
         .post( '/could-do/new' )
-        .send( mockCouldDoData.fakeEdit )
-        .then( response => expect( response.body.text ).to.equal( 'eat lunch' ) )
+        .send( mockCouldDoData.fakeCouldDo2 )
+        .then( response => expect( response.body.text ).to.equal( 'eat zero sugar' ) )
     )
 
     it( 'should throw an error if supplied invalid attributes', () =>
@@ -31,14 +31,14 @@ describe( 'couldDo routes', () => {
       it( 'should return the edited couldDo', () =>
         chai.request( server )
           .post( '/could-do/edit/998' )
-          .send({ text: 'eat lunch' })
+          .send( mockCouldDoData.fakeEdit )
           .then( response => expect( response.body.text ).to.equal( 'eat lunch' ))
       )
 
       it( 'should throw an error if no couldDo with given id is found', () =>
         chai.request( server )
           .post( '/could-do/edit/12345' )
-          .send({ text: 'eat lunch' })
+          .send( mockCouldDoData.fakeEdit )
           .catch( error => expect( error ).to.be.an.instanceof( Error ))
       )
 
