@@ -3,7 +3,7 @@ import server from '../../../server'
 import {
   withThreeCouldDos,
   withThreeProjects
-} from '../../../../dataServices/database/testsHelper'
+} from '../../../../testUtilities/testsHelper'
 
 describe( 'couldDo routes', () => {
 

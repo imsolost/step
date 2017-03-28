@@ -1,8 +1,8 @@
 /* eslint-disable */
 import { expect, chai } from '../../../../../configuration/testSetup'
 import server from '../../../server'
-import { mockCouldDoData } from '../mockRoutesTestData'
-import { withThreeCouldDos } from '../../../../dataServices/database/testsHelper'
+import { mockCouldDoData } from '../../../../testUtilities/mockDatabaseTestData'
+import { withThreeCouldDos } from '../../../../testUtilities/testsHelper'
 
 describe( 'couldDo routes', () => {
 
@@ -12,7 +12,7 @@ describe( 'couldDo routes', () => {
       chai.request( server )
         .post( '/could-do/new' )
         .send( mockCouldDoData.fakeEdit )
-        .then( response => expect( response.body.text ).to.equal( 'quit coffee' ) )
+        .then( response => expect( response.body.text ).to.equal( 'eat lunch' ) )
     )
 
     it( 'should throw an error if supplied invalid attributes', () =>
