@@ -15,8 +15,8 @@ describe( '<ProjectListContainer />', () => {
 
     before( () => {
       moxios.install()
-      mountSpy = sinon.spy(ProjectListContainer.prototype, 'componentDidMount')
-      wrapper = mount(<ProjectListContainer />)
+      mountSpy = sinon.spy( ProjectListContainer.prototype, 'componentDidMount' )
+      wrapper = mount( <ProjectListContainer /> )
     })
 
     after( () => {
@@ -47,9 +47,9 @@ describe( '<ProjectListContainer />', () => {
 
     before( () => {
       moxios.install()
-      errorStub = sinon.stub(console, 'log').callsFake( () => '')
-      unmountSpy = sinon.spy(globalState, 'unsubscribe')
-      wrapper = mount(<ProjectListContainer />)
+      errorStub = sinon.stub( console, 'log' ).callsFake( () => '')
+      unmountSpy = sinon.spy( globalState, 'unsubscribe' )
+      wrapper = mount( <ProjectListContainer /> )
     })
 
     after( () => {
@@ -78,7 +78,7 @@ describe( '<ProjectListContainer />', () => {
   })
 
   it( 'renders the child component', () =>
-      expect(shallow(<ProjectListContainer />).find('ProjectListPresentation').length).to.equal(1)
+      expect(shallow( <ProjectListContainer /> ).find('ProjectListPresentation').length).to.equal(1)
     )
 
 })
