@@ -4,7 +4,6 @@ import componentErrorHandler from '../componentErrorHandler'
 import ProjectListPresentation from './ProjectListPresentation'
 import globalState from '../globalState'
 
-
 export default class ProjectListContainer extends Component {
   constructor() {
     super()

@@ -3,4 +3,4 @@ const componentErrorHandler = ( componentName, error ) => {
   console.log( error ) // eslint-disable-line
 }
 
-export default componentErrorHandler
+export default { componentErrorHandler }
