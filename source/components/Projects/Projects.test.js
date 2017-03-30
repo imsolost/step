@@ -1,28 +1,46 @@
 import React from 'react'
+import sinon from 'sinon'
 import { shallow, mount } from 'enzyme'
 import { expect } from '../../../configuration/testSetup'
-import sinon from 'sinon'
 import ProjectListContainer from './ProjectListContainer'
-import ProjectListPresentation from './ProjectListPresentation'
+import moxios from 'moxios'
 
-describe.only('<ProjectListContainer />', () => {
+describe( '<ProjectListContainer />', () => {
 
-  it('calls componentDidMount', () => {
+  context( 'componentDidMount()', () => {
+    let wrapper
+    const fakeData = [ { id: 1, text: 'cows' } ]
 
-     sinon.spy(ProjectListContainer.prototype, 'componentDidMount')
-     const wrapper = mount(<ProjectListContainer />)
-     expect(ProjectListContainer.prototype.componentDidMount.calledOnce).to.equal(true);
-   })
+    before( async () => {
+      moxios.install()
+      sinon.spy(ProjectListContainer.prototype, 'componentDidMount')
+      wrapper = await mount(<ProjectListContainer />)
+    })
+    after( () => {
+      moxios.uninstall()
+    })
 
-   it('allows us to set props', () => {
-     const wrapper = mount(<ProjectListContainer bar="baz" />);
-     expect(wrapper.props().bar).to.equal("baz");
-     wrapper.setProps({ bar: "foo" });
-     expect(wrapper.props().bar).to.equal("foo");
-   })
+    it( 'calls componentDidMount', () => {
+      expect(ProjectListContainer.prototype.componentDidMount.calledOnce).to.equal(true)
+    })
 
-  it('renders the child component', () =>
-    expect(shallow(<ProjectListContainer />).find('ProjectListPresentation').length).to.equal(1)
-  )
+    it( 'it makes http request and sets state to response', ( done ) => {
+      return moxios.wait( () => {
+      let request = moxios.requests.mostRecent()
+      request.respondWith({
+        status: 200,
+        response: fakeData
+      }).then( () => {
+        expect(wrapper.state().projects).to.eql(fakeData)
+        done()
+       }).catch(done)
+     })
+    })
+
+    })
+
+    it('renders the child component', () =>
+      expect(shallow(<ProjectListContainer />).find('ProjectListPresentation').length).to.equal(1)
+    )
 
 })
