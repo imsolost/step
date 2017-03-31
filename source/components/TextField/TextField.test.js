@@ -5,7 +5,7 @@ import TextFieldContainer from './TextFieldContainer'
 import moxios from 'moxios'
 import sinon from 'sinon'
 
-describe.only('<TextFieldContainer />', () => {
+describe('<TextFieldContainer />', () => {
 
   it( 'calls toggleEditable on click', () => {
     const spy = sinon.spy(TextFieldContainer.prototype, 'toggleEditable')

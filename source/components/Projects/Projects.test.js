@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import moxios from 'moxios'
 import { shallow, mount } from 'enzyme'
 import { expect } from '../../../configuration/testSetup'
-import ProjectListContainer from './ProjectListContainer'
+import ProjectListContainer from '../ProjectsList/ProjectListContainer'
 import globalState from '../globalState'
 
 describe( '<ProjectListContainer />', () => {
